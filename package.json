@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "ts-node src/app/server_app/Launcher.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "ts-node": "^10.9.2",
     "uuid": "^11.1.0"
   }
 }
