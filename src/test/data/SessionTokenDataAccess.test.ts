@@ -8,7 +8,7 @@ import { SessionTokenDataAccess } from "../../app/server_app/data/SessionTokenDa
  const mockGetBy = jest.fn()
  const mockUpdate = jest.fn()
  
- jest.mock('../../../app/server_app/data/DataBase', () => {
+ jest.mock('../../app/server_app/data/DataBase', () => {
      return {
          DataBase: jest.fn().mockImplementation(() => {
              return {

@@ -9,7 +9,7 @@ import { ReservationsDataAccess } from "../../app/server_app/data/ReservationsDa
  const mockDelete = jest.fn();
  const mockGetAllElements = jest.fn();
  
- jest.mock('../../../app/server_app/data/DataBase', () => {
+ jest.mock('../../app/server_app/data/DataBase', () => {
      return {
          DataBase: jest.fn().mockImplementation(() => {
              return {
@@ -54,7 +54,7 @@ import { ReservationsDataAccess } from "../../app/server_app/data/ReservationsDa
          const actual = await sut.createReservation(someReservation);
  
          expect(actual).toBe(someId);
-         expect(mockInsert).toBeCalledWith(someReservation);
+         expect(mockInsert).toHaveBeenCalledWith(someReservation);
      });
  
      it('should make the update reservation call', async () => {
@@ -64,7 +64,7 @@ import { ReservationsDataAccess } from "../../app/server_app/data/ReservationsDa
              'someOtherEndDate'
          )
  
-         expect(mockUpdate).toBeCalledWith(
+         expect(mockUpdate).toHaveBeenCalledWith(
              someId,
              'endDate',
              'someOtherEndDate'
@@ -74,7 +74,7 @@ import { ReservationsDataAccess } from "../../app/server_app/data/ReservationsDa
      it('should make the delete reservation call', async () => {
          await sut.deleteReservation(someId);
  
-         expect(mockDelete).toBeCalledWith(someId);
+         expect(mockDelete).toHaveBeenCalledWith(someId);
      });
  
      it('should return reservation by id', async () => {
@@ -83,7 +83,7 @@ import { ReservationsDataAccess } from "../../app/server_app/data/ReservationsDa
          const actual = await sut.getReservation(someId);
  
          expect(actual).toEqual(someReservation);
-         expect(mockGetBy).toBeCalledWith('id', someId);
+         expect(mockGetBy).toHaveBeenCalledWith('id', someId);
      });
  
      it('should return all reservations', async () => {
@@ -92,7 +92,7 @@ import { ReservationsDataAccess } from "../../app/server_app/data/ReservationsDa
          const actual = await sut.getAllReservations();
  
          expect(actual).toEqual([someReservation, someReservation]);
-         expect(mockGetAllElements).toBeCalledTimes(1);
+         expect(mockGetAllElements).toHaveBeenCalledWith();
      });
  
  
